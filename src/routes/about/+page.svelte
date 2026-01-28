@@ -20,6 +20,8 @@
 			<input
 				id="email"
 				name="email"
+				required
+				type="email"
 				class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
 			/>
 		</div>

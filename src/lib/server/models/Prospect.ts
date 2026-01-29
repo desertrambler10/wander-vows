@@ -1,4 +1,3 @@
-// $lib/server/domain/prospect.ts
 export interface ProspectProps {
 	name: string;
 	email: string;    // make it required in your domain if you want

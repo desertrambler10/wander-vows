@@ -1,4 +1,3 @@
-// $lib/server/mappers/prospectMapper.ts
 import type { NewProspectRow } from '$lib/server/db/schema/prospects';
 import { Prospect } from '$lib/server/models/Prospect';
 

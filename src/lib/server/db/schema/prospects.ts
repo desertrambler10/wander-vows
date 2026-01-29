@@ -1,4 +1,3 @@
-// $lib/server/db/schema/prospects.ts
 import { pgTable, text, serial } from 'drizzle-orm/pg-core';
 
 export const prospect = pgTable('prospect', {

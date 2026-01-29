@@ -1,19 +1,18 @@
+// +page.server.ts
 import type { Actions } from './$types';
 import { db } from '$lib/server/db';
-import { prospect, type NewProspect } from '$lib/server/db/schema/prospects';
+import { prospect } from '$lib/server/db/schema/prospects';
+import { Prospect } from '$lib/server/models/Prospect';
+import { toNewProspectRow } from '$lib/server/database_mappers/prospectMapper';
 
 export const actions = {
 	default: async ({ request }) => {
-		const data = await request.formData();
+		const form = await request.formData();
 
-		const name = data.get('name')?.toString().trim();
-		const email = data.get('email')?.toString().trim(); // check for custom email type
-		const message = data.get('message')?.toString().trim();
+		const domainProspect = Prospect.fromForm(form);
+		if (!domainProspect) return { success: false };
 
-		if (!name || !email || !message) return { success: false };
-
-		const newProspect: NewProspect = { name, email, message };
-		await db.insert(prospect).values(newProspect);
+		await db.insert(prospect).values(toNewProspectRow(domainProspect));
 
 		return { success: true };
 	}
